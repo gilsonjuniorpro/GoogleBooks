@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GoogleBooks</string>
+    <string name="image_book">Image Book</string>
 </resources>
