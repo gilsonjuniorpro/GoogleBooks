@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.BookDetailActivity"></activity>
+        <activity android:name=".ui.BookDetailActivity"
+            android:parentActivityName=".ui.MainActivity"/>
     </application>
 
 </manifest>

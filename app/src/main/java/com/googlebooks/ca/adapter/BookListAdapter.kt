@@ -7,10 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import coil.transform.BlurTransformation
-import coil.transform.CircleCropTransformation
-import coil.transform.GrayscaleTransformation
-import coil.transform.RoundedCornersTransformation
 import com.googlebooks.ca.R
 import com.googlebooks.ca.model.Volume
 import kotlinx.android.synthetic.main.item_book.view.*
