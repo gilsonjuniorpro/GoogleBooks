@@ -16,7 +16,8 @@ import com.googlebooks.ca.model.Volume
 import kotlinx.android.synthetic.main.item_book.view.*
 
 class BookListAdapter(
-    val items: List<Volume>
+    private val items: List<Volume>,
+    private val onItemClick: (Volume) -> Unit
 ) : RecyclerView.Adapter<BookListAdapter.BookHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookHolder {
@@ -32,11 +33,16 @@ class BookListAdapter(
         holder.tvTitle.text = volume.volumeInfo.title
         holder.tvAuthors.text = volume.volumeInfo.authors?.joinToString() ?: ""
         holder.tvPages.text = volume.volumeInfo.pageCount?.toString() ?: "-"
-        holder.ivThumbnail?.load(volume.volumeInfo.imageLinks?.thumbnail) {
-            crossfade(true)
-            crossfade(500)
-            placeholder(R.drawable.image_not_found)
+        if(volume.volumeInfo.imageLinks != null) {
+            holder.ivThumbnail?.load(volume.volumeInfo.imageLinks?.smallThumbnail) {
+                crossfade(true)
+                crossfade(500)
+                placeholder(R.drawable.image_not_found)
+            }
+        }else{
+            holder.ivThumbnail.setImageResource(R.drawable.image_not_found)
         }
+        holder.itemView.setOnClickListener{ onItemClick(volume) }
     }
 
     class BookHolder(rootView: View): RecyclerView.ViewHolder(rootView){
