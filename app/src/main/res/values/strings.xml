@@ -4,8 +4,9 @@
     <string name="loading">loading...</string>
     <string name="error_loading">Loading error</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_books">Books</string>
     <string name="tab_favorites">Favorites</string>
+    <string name="search_your_book">search your book</string>
+    <string name="view_book_web">view book in web</string>
 </resources>
