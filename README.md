@@ -4,7 +4,7 @@
 This is a simple project **Using Google Books API** to fetch data. I used the Android Jetpack components to make this a modern project.
 
 ### 📷Images
-<img src="http://www.projectconnect.com.br/github_imagens/image_202004170959.gif" width="30%"></img>
+<img src="image_202004170959.gif" width="30%"></img>
 
 ### 💻Technology
 - [Kotlin](https://kotlinlang.org/)
