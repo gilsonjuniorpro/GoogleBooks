@@ -14,7 +14,6 @@ This is a simple project **Using Google Books API** to fetch data. I used the An
 - [GSON](https://github.com/google/gson)
 
 ### Libraries
-
 ```bash
     ext {
         kotlin_version = '1.3.71'
