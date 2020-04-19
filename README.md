@@ -1,9 +1,9 @@
-# GoogleBooks
+# Google Books
 
 ### **Overview - About this project**
 This is a simple project **Using Google Books API** to fetch data. I used the Android Jetpack components to make this a modern project.
 
-### 📷Images
+### 📷 How is this App
 <img src="image_202004170959.gif" width="30%"></img>
 <img src="Screenshot_1587175071v2.png" width="30%"></img>
 
@@ -66,4 +66,4 @@ This is a simple project **Using Google Books API** to fetch data. I used the An
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    ```
+```
