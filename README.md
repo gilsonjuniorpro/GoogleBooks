@@ -67,3 +67,11 @@ This is a simple project **Using Google Books API** to fetch data. I used the An
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 ```
+
+
+### Donation
+If this project help you reduce time to develop, you can buy me a cup of coffee :) 
+
+<a href="https://www.buymeacoffee.com/gilsonjuniorpro" target="_blank">
+    <img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" >
+</a>
