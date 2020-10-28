@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.googlebooks.ca.R
 import com.googlebooks.ca.adapter.BookListAdapter
+import com.googlebooks.ca.adapter.VolumeListener
 import com.googlebooks.ca.model.Volume
 import com.googlebooks.ca.ui.BookDetailActivity
 import com.googlebooks.ca.viewmodel.BookListViewModel
@@ -43,6 +44,11 @@ class BookListFragment : Fragment() {
             DividerItemDecoration(requireContext(), layoutManager.orientation)
         )
 
+        val adapter = BookListAdapter(VolumeListener { volume ->
+            openDetail(volume)
+        })
+        recyclerView.adapter = adapter
+
         viewModel.state.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
                 is BookListViewModel.State.Loading -> {
@@ -51,8 +57,7 @@ class BookListFragment : Fragment() {
 
                 is BookListViewModel.State.Loaded -> {
                     loading.visibility = View.GONE
-                    recyclerView.adapter =
-                        BookListAdapter(state.items, this::openDetail)
+                    adapter.submitList(state.items)
                 }
 
                 is BookListViewModel.State.Error -> {

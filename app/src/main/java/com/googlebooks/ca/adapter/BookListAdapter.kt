@@ -1,50 +1,53 @@
 package com.googlebooks.ca.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
-import com.googlebooks.ca.R
+import com.googlebooks.ca.databinding.ItemBookBinding
 import com.googlebooks.ca.model.Volume
-import kotlinx.android.synthetic.main.item_book.view.*
 
-class BookListAdapter(
-    private val items: List<Volume>,
-    private val onItemClick: (Volume) -> Unit
-) : RecyclerView.Adapter<BookListAdapter.BookHolder>() {
+class BookListAdapter(private val clickListener: VolumeListener) : ListAdapter<Volume,
+        BookListAdapter.BookHolder>(VolumeCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookHolder {
-        val layout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_book, parent, false)
-        return BookHolder(layout)
+        return BookHolder.from(parent)
     }
-
-    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: BookHolder, position: Int) {
-        val volume = items[position]
-        holder.tvTitle.text = volume.volumeInfo.title
-        holder.tvAuthors.text = volume.volumeInfo.authors?.joinToString() ?: ""
-        holder.tvPages.text = volume.volumeInfo.pageCount?.toString() ?: "-"
-        if(volume.volumeInfo.imageLinks != null) {
-            holder.ivThumbnail?.load(volume.volumeInfo.imageLinks?.smallThumbnail) {
-                crossfade(true)
-                crossfade(500)
-                placeholder(R.drawable.image_not_found)
-            }
-        }else{
-            holder.ivThumbnail.setImageResource(R.drawable.image_not_found)
-        }
-        holder.itemView.setOnClickListener{ onItemClick(volume) }
+        val volume = getItem(position)
+        holder.bind(clickListener, volume)
     }
 
-    class BookHolder(rootView: View): RecyclerView.ViewHolder(rootView){
-        val ivThumbnail: ImageView = rootView.ivThumbnail
-        val tvTitle: TextView = rootView.tvTitle
-        val tvAuthors: TextView = rootView.tvAuthors
-        val tvPages: TextView = rootView.tvPages
+    class BookHolder private constructor(private val binding: ItemBookBinding):
+        RecyclerView.ViewHolder(binding.root){
+        fun bind(clickListener: VolumeListener, volume: Volume) {
+            binding.volume = volume
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): BookHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemBookBinding.inflate(layoutInflater, parent, false)
+                return BookHolder(binding)
+            }
+        }
     }
+}
+
+class VolumeCallBack : DiffUtil.ItemCallback<Volume>() {
+    override fun areItemsTheSame(oldItem: Volume, newItem: Volume): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Volume, newItem: Volume): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class VolumeListener(val clickListener: (volume: Volume) -> Unit) {
+    fun onClick(volume: Volume) = clickListener(volume)
 }

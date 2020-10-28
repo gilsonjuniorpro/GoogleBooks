@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.googlebooks.ca.R
 import com.googlebooks.ca.adapter.BookListAdapter
+import com.googlebooks.ca.adapter.VolumeListener
 import com.googlebooks.ca.model.Volume
 import com.googlebooks.ca.repository.BookRepository
 import com.googlebooks.ca.ui.BookDetailActivity
@@ -49,9 +50,14 @@ class BookFavoritesFragment : Fragment() {
             DividerItemDecoration(requireContext(), layoutManager.orientation)
         )
 
+        val adapter = BookListAdapter(VolumeListener { volume ->
+            openDetail(volume)
+        })
+
+        recyclerView.adapter = adapter
         viewModel.favoriteBooks.observe(viewLifecycleOwner, Observer { items ->
             loading.visibility = View.GONE
-            recyclerView.adapter = BookListAdapter(items, this::openDetail)
+            adapter.submitList(items)
         })
     }
 

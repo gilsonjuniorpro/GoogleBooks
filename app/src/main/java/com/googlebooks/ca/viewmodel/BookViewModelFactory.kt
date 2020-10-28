@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.googlebooks.ca.repository.BookRepository
 import java.lang.IllegalArgumentException
 
-class BookViewModelFactory(val repository: BookRepository): ViewModelProvider.Factory {
+class BookViewModelFactory(val repository: BookRepository):
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(BookFavoritesViewModel::class.java)){
             return BookFavoritesViewModel(repository) as T
