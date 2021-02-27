@@ -14,7 +14,7 @@ object BookHttp {
         .connectTimeout(5, TimeUnit.SECONDS)
         .build()
 
-    fun searchBook(q: String) : SearchResult?{
+    fun searchBook(q: String?) : SearchResult?{
         val request = Request.Builder()
             .url(String.format(Dominios.BOOK_URL, q))
             .build()

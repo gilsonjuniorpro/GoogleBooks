@@ -1,5 +1,9 @@
 package com.googlebooks.ca.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class VolumeInfo(
     val title: String,
     val description: String?,
@@ -8,4 +12,4 @@ data class VolumeInfo(
     val publishedDate: String?,
     val pageCount: Int?,
     val imageLinks: ImageLinks?
-)
+): Parcelable
