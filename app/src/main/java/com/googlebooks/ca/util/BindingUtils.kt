@@ -19,7 +19,7 @@ package com.googlebooks.ca.util
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import coil.api.load
+import coil.load
 import com.googlebooks.ca.R
 import com.googlebooks.ca.model.Volume
 
