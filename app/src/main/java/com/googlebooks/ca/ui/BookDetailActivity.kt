@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import coil.api.load
+import coil.load
 import com.googlebooks.ca.R
 import com.googlebooks.ca.model.Volume
 import com.googlebooks.ca.repository.BookRepository
