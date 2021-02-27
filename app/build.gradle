@@ -50,7 +50,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     //make requests to network
-    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
 
     //map class from Json to objetcs
     implementation 'com.google.code.gson:gson:2.8.6'
